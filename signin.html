@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    <style>
+      .form{
+          width: 20%;
+          margin: auto;
+          text-align: center;
+      }
+      .form input{
+          width: 90%;
+          height: 25px;
+          display: block;
+          margin: 18px auto;
+          font-size: 20px;
+          padding: 5px;
+      }
+      .form button {
+        font-size: 18px;
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+      }
+      button:hover{
+          cursor: pointer;
+      }
+  </style>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">
+        <img src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png" alt="">
+    </div>
+    <div style="margin-right: 10px;" class="signin"><button onclick="window.location.href='./menu.html'">Menu</button></div>
+    <div class="signup"><button onclick="window.location.href='./signup.html'">Sign up</button></div>
+    <div class="signup"><button onclick="window.location.href='./signin.html'">Sign in</button></div>
+    <div class="signin"><button onclick="window.location.href='./cart.html'">Cart</button></div>
+</nav>
+    <div class="form">
+      <h2>Please Sign in</h2>
+        <input placeholder="Password" type="password" name="" id="password">
+        <input placeholder="username" type="text" id="username">
+        <button id="submit">Submit</button>
+    </div>
+</body>
+<script>
+ let password = document.getElementById("password");
+let username = document.getElementById("username");
+let submit = document.getElementById("submit");
+function Signin() {
+  let data = {
+    password: password.value,
+    username: username.value
+  };
+  fetch("https://masai-api-mocker.herokuapp.com/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((d) => {
+        
+        if(d.token==undefined){
+            alert("Login Successful")
+        }else{
+            alert(d.message);
+        }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+submit.addEventListener("click", () => {
+  Signin();
+});
+</script>
+</html>

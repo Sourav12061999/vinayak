@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        .card{
+            width: 30%;
+            margin: auto;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .card img{
+            width: 70%;
+            display: block;
+            margin: auto;
+        }
+        button{
+          background-color: black;
+          color: white;
+          margin-top: 10px;
+          font-size: 20px;
+          padding: 10px 15px;
+    
+        }
+    </style>
+</head>
+<link rel="stylesheet" href="index.css">
+<body>
+    <nav>
+        <div class="logo">
+            <img src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png" alt="">
+        </div>
+        <div style="margin-right: 10px;" class="signin"><button onclick="window.location.href='./menu.html'">Menu</button></div>
+        <div class="signup"><button onclick="window.location.href='./signup.html'">Sign up</button></div>
+        <div class="signup"><button onclick="window.location.href='./signin.html'">Sign in</button></div>
+        <div class="signin"><button onclick="window.location.href='./cart.html'">Cart</button></div>
+    </nav>
+    <div id="cont">
+
+    </div>
+</body>
+<script>
+    let data=JSON.parse(localStorage.getItem("mealsEvaluation"));
+    let cont=document.getElementById("cont");
+    data.forEach(element => {
+        let card=document.createElement("div");
+        card.setAttribute("class","card");
+        let img=document.createElement("img");
+        img.src=element.strMealThumb;
+        card.appendChild(img);
+        let btn=document.createElement("button");
+        btn.textContent="Place the order";
+        btn.addEventListener("click",()=>{notify(element)})
+        card.appendChild(btn);
+        cont.appendChild(card)
+    });
+    //0 seconds : Your order is accepted 3 seconds : Your order is being cooked 8 seconds : 
+    //Your order is ready 10 seconds : Order out for delivery 12 seconds : Order delivered
+    function notify(el){
+     alert(`Your Order ${el.strMeal} is accepted`);
+     setTimeout(() => {
+        alert(`Your Order ${el.strMeal} is being cooked`);
+     }, 3000);
+     setTimeout(() => {
+        alert(`Your Order ${el.strMeal} is ready`);
+     }, 8000);
+     setTimeout(() => {
+        alert(`Your Order ${el.strMeal} is out for delivery`);
+     }, 10000);
+     setTimeout(() => {
+        alert(`Your Order ${el.strMeal} is delivered`);
+     }, 12000);
+    }
+</script>
+</html>

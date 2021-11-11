@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+</head>
+<style>
+    .form{
+        width: 20%;
+        margin: auto;
+        text-align: center;
+    }
+    .form input{
+        width: 90%;
+        height: 25px;
+        display: block;
+        margin: 18px auto;
+        font-size: 20px;
+        padding: 5px;
+    }
+    .form button {
+      font-size: 18px;
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+</style>
+<link rel="stylesheet" href="index.css">
+<body>
+    <nav>
+        <div class="logo">
+            <img src="https://logos-world.net/wp-content/uploads/2020/12/Lays-Logo.png" alt="">
+        </div>
+        <div style="margin-right: 10px;" class="signin"><button onclick="window.location.href='./menu.html'">Menu</button></div>
+        <div class="signup"><button onclick="window.location.href='./signup.html'">Sign up</button></div>
+        <div class="signup"><button onclick="window.location.href='./signin.html'">Sign in</button></div>
+        <div class="signin"><button onclick="window.location.href='./cart.html'">Cart</button></div>
+    </nav>
+    <div class="form">
+        <h2>Sign up Form</h2>
+        <input placeholder="Name" id="name" type="text">
+        <input placeholder="E-mail" type="email" name="" id="email">
+        <input placeholder="Password" type="password" name="" id="password">
+        <input placeholder="username" type="text" id="username">
+        <input placeholder="Phone Number" type="number" name="" id="mobile">
+        <input placeholder="Description" type="text" id="desc">
+        <button id="submit">Submit</button>
+    </div>
+</body>
+<script src="./signup.js"></script>
+</html>
